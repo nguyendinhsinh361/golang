@@ -10,9 +10,9 @@ Err 1:How to fix "go get: warning: modules disabled by GO111MODULE=auto in GOPAT
   go mod tidy
   ==========================================================
 
-# fmt: Gói này cho phép định dạng các chuỗi, giá trị cơ bản hoặc bất kì thứ gì và in chúng hoặc thu nhập đầu vào của người dùng từ bảng điều khiểm hoặc ghi vào tệp bằng trình ghi hoặc thậm chí in các thông báo lỗi ưa thích tùy chỉnh. Gói này là tất cả về định dạng đầu vào và đầu ra.
+- fmt: Gói này cho phép định dạng các chuỗi, giá trị cơ bản hoặc bất kì thứ gì và in chúng hoặc thu nhập đầu vào của người dùng từ bảng điều khiểm hoặc ghi vào tệp bằng trình ghi hoặc thậm chí in các thông báo lỗi ưa thích tùy chỉnh. Gói này là tất cả về định dạng đầu vào và đầu ra.
 
-# math/rand: Sử dụng để tính toán
+- math/rand: Sử dụng để tính toán
 
 1. func swap(x,y string) (string, string) {
    return y, x;
