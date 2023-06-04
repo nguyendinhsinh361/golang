@@ -12,6 +12,23 @@ on:
 jobs:
   test:
     name: Test
+
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:12
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: 123456
+          POSTGRES_DB: shin
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,6 +37,9 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.19
+
+      - name: Run migration
+        run: make migrateup
 
       - name: Test
         run: make test
