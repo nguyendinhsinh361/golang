@@ -1,0 +1,66 @@
+------ DOCKER -------
+docker run --name postgres12 -p 5432:5432-e POSTGRES_USER=root -e POSTGRES_PASSWORD=123456 -d postgres:12-alpine
+docker ps
+docker ps -a (Tất cả các container đang có)
+
+docker logs postgres12
+docker stop postgres12
+
+docker rm
+
+---
+docker exec -it postgres12 psql -U root 
+docker exec -it postgres12 /bin/sh
+=> 
+----- Vào root -----
+createdb --username=root --owner=root shin
+psql shin
+\q: Trở về đường dẫn cha
+dropdb shin
+
+
+--- Kết hợp ----
+docker exec -it postgres12 createdb --username=root --owner=root shin
+docker exec -it postgres12 psql -U root shin
+docker exec -it postgres12 dropdb shin
+
+------ POSTGRES --------
+select now();
+
+
+
+------- GOLANG MIGRATE ------
+migrate create -ext sql -dir db/migratioon -seq init_schema
+
+migrate -path db/migration -database "postgresql://root:123456@localhost:5432/shin?sslmode=disable" -verbose up
+
+
+------- GORN --------
+------- SQLX --------
+------- SQLC --------
+docker run --name sqlc --rm -v "C:/Users/Sinhthuatthom/Desktop/Golang:/src" -w /src kjconroy/sqlc generate
+docker run --name sqlc --rm -v "C:/Users/Sinhthuatthom/Desktop/Golang:/src" -w /src kjconroy/sqlc init 
+
+
+------ GO -------
+fix red flag: go work init
+https://github.com/techschool/simplebank
+go mod init
+go mod tidy
+go get github.com/stretchr/testify
+github.com/lib/pq
+
+
+
+------ NOTE ------
+1.for := range
+When ranging over a slice, two values are returned for each iteration. The first is the index, and the second is a copy of the element at that index.
+
+2. Nếu bị lỗi panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x2 addr=0x0 pc=0x10016c9d0]
+-> Kiểm tra lúc khai báo := cho pointer *
+------ TEST -------
+Note: Test phải có type là tesing.T mới run test được
+go test -v -cover ./...
+
+
