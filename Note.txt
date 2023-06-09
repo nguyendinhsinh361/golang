@@ -16,6 +16,8 @@ docker run --name simplebank -p 8000:8000 simplebank:lastest
 
 docker run --name simplebank --network bank-network -p 8000:8000 -e GIN_MODE=release -e DB_SOURCE="postgresql://root:123456@postgres12:5432/shin?sslmode=disable" simplebank:lastest
 
+docker compose up
+docker compose down
 
 == Kiểm tra NetworkSettings:
 docker container inspect postgres12
@@ -32,7 +34,8 @@ docker network connect bank-network postgres12
 ---
 docker exec -it postgres12 psql -U root 
 docker exec -it postgres12 /bin/sh
-=> 
+=> https://docs.docker.com/
+
 ----- Vào root -----
 createdb --username=root --owner=root shin
 psql shin
@@ -47,6 +50,9 @@ docker exec -it postgres12 dropdb shin
 
 ------ POSTGRES --------
 select now();
+
+------- SH -------
+chmod +x start.sh
 
 
 
