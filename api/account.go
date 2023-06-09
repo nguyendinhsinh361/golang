@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/lib/pq"
-	"github.com/techschool/simplebank/db/sqlc"
+	sqlc "github.com/techschool/simplebank/db/sqlc"
 	"github.com/techschool/simplebank/token"
 )
 
