@@ -4,7 +4,6 @@ Err 1:How to fix "go get: warning: modules disabled by GO111MODULE=auto in GOPAT
 
 - go env -w GO111MODULE=on
   go mod init module_name
-
 - Muốn sử dụng module khác thì phải run:
   go mod edit -replace example.com/greetings=../greetings
   go mod tidy
